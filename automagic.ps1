@@ -23,8 +23,8 @@
 ##
 ## Setup
 ##
-Import-Module -DisableNameChecking $PSScriptRoot\..\lib\force-mkdir.psm1
-Import-Module -DisableNameChecking $PSScriptRoot\..\lib\take-own.psm1
+Import-Module -DisableNameChecking $PSScriptRoot\.\lib\force-mkdir.psm1
+Import-Module -DisableNameChecking $PSScriptRoot\.\lib\take-own.psm1
 do {} until (Elevate-Privileges SeTakeOwnershipPrivilege) # Elevate priviledges for this process
 Write-Output "Welcome to Powershell-Automagic-Setup!"
 Write-Output "Please grab a coffee while we configure your PC..."
