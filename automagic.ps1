@@ -9,9 +9,7 @@
 # ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
 # FITNESS FOR A PARTICULAR PURPOSE.
 #
-#  ╔═╗┌─┐┬ ┬┌─┐┬─┐┌─┐┬ ┬┌─┐┬  ┬     ╔═╗┬ ┬┌┬┐┌─┐┌┬┐┌─┐┌─┐┬┌─┐   ╔═╗┌─┐┌┬┐┬ ┬┌─┐
-#  ╠═╝│ ││││├┤ ├┬┘└─┐├─┤├┤ │  │  ───╠═╣│ │ │ │ ││││├─┤│ ┬││  ───╚═╗├┤  │ │ │├─┘
-#  ╩  └─┘└┴┘└─┘┴└─└─┘┴ ┴└─┘┴─┘┴─┘   ╩ ╩└─┘ ┴ └─┘┴ ┴┴ ┴└─┘┴└─┘   ╚═╝└─┘ ┴ └─┘┴  
+# Powershell-Automagic-Setup
 #
 # The goal of this script is to create a single configuration point for automagically
 # setting up a fresh Windows installation to my liking.
@@ -28,7 +26,6 @@ Import-Module -DisableNameChecking $PSScriptRoot\.\lib\take-own.psm1
 do {} until (Elevate-Privileges SeTakeOwnershipPrivilege) # Elevate priviledges for this process
 Write-Output "Welcome to Powershell-Automagic-Setup!"
 Write-Output "Please grab a coffee while we configure your PC..."
-Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 ##
 ## Disable Telemetry
 ##
@@ -161,7 +158,7 @@ $domains = @(
     "client.wns.windows.com"
     "wdcp.microsoft.com"                       # May cause issues with Windows Defender Cloud-based protection.
     "dns.msftncsi.com"                         # This causes Windows to think it doesn't have internet.
-    "storeedgefd.dsx.mp.microsoft.com"         # Breaks Windows Store.
+    #"storeedgefd.dsx.mp.microsoft.com"         # Breaks Windows Store.
     "wdcpalt.microsoft.com"
     "settings-ssl.xboxlive.com"
     "settings-ssl.xboxlive.com-c.edgekey.net"
@@ -255,9 +252,9 @@ $services = @(
     "WMPNetworkSvc"                            # Windows Media Player Network Sharing Service
     "wscsvc"                                   # Windows Security Center Service
     #"WSearch"                                 # Windows Search
-    "XblAuthManager"                           # Xbox Live Auth Manager
-    "XblGameSave"                              # Xbox Live Game Save Service
-    "XboxNetApiSvc"                            # Xbox Live Networking Service
+    #"XblAuthManager"                           # Xbox Live Auth Manager
+    #"XblGameSave"                              # Xbox Live Game Save Service
+    #"XboxNetApiSvc"                            # Xbox Live Networking Service
 )
 foreach ($service in $services) {
     Get-Service -Name $service | Set-Service -StartupType Disabled
@@ -547,12 +544,12 @@ $apps = @(
     "Microsoft.WindowsMaps"
     "Microsoft.WindowsPhone"
     "Microsoft.WindowsSoundRecorder"
-    "Microsoft.WindowsStore"
-    "Microsoft.XboxApp"
-    "Microsoft.XboxGameOverlay"
-    "Microsoft.XboxGamingOverlay"
-    "Microsoft.XboxSpeechToTextOverlay"
-    "Microsoft.Xbox.TCUI"
+    #"Microsoft.WindowsStore"
+    #"Microsoft.XboxApp"
+    #"Microsoft.XboxGameOverlay"
+    #"Microsoft.XboxGamingOverlay"
+    #"Microsoft.XboxSpeechToTextOverlay"
+    #"Microsoft.Xbox.TCUI"
     "Microsoft.ZuneMusic"
     "Microsoft.ZuneVideo"
     # Threshold 2 apps
@@ -575,7 +572,7 @@ $apps = @(
     # Redstone 5 apps
     "Microsoft.MixedReality.Portal"
     "Microsoft.ScreenSketch"
-    "Microsoft.XboxGamingOverlay"
+    #"Microsoft.XboxGamingOverlay"
     "Microsoft.YourPhone"
     # non-Microsoft
     "9E2F88E3.Twitter"
